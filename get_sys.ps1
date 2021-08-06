@@ -15,8 +15,6 @@
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
 $ErrPath = Join-Path -Path $DesktopPath -ChildPath errors.txt
 $LastPath = Join-Path -Path $DesktopPath -ChildPath last_24.txt
-$ErrPath
-$LastPath
 $BaseCmd = "Get-EventLog -LogName System "
 $Last24 = "-After (Get-Date).AddDays(-1) | Out-File -FilePath $LastPath"
 $New20 = "-Newest 20"
