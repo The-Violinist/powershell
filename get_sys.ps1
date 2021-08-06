@@ -11,7 +11,18 @@ Get-EventLog -LogName System -Newest 500 | Group-Object -Property Source | Forma
 #$Events | Group-Object -Property Source | Format-Table -AutoSize -Wrap
 
 #Portions of commands can be stored as variables then run using Invoke-Expression
-$Var1 = "Get-EventLog -LogName System "
-$Var2 = "-Newest 20"
-Invoke-Expression $Var1$Var2
+$BaseCmd = "Get-EventLog -LogName System"
+$Last24 = "-After (Get-Date).AddDays(-1) | Out-File -FilePath .\last_24.txt"
+$New20 = "-Newest 20"
+$ErrEntry = "-EntryType Error | Out-File -FilePath .\errors.txt"
+$Inst16 = "-InstanceID 16"
+$Source500 = "-Newest 500 | Group-Object -Property Source | Format-Table -AutoSize -Wrap"
+Invoke-Expression $BaseCmd$New20
 Invoke-Expression $Var1"-Newest 20"
+
+#Putting the variables in an array then looping through.
+
+$log_cmd=$Last24,$New20,$ErrEntry,$Inst16,Source500
+foreach ($log_req in $log_cmd) {
+  Invoke-Expression $BaseCmd$log_req;
+ }
