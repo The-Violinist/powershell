@@ -26,3 +26,5 @@ $log_cmd=$Last24,$New20,$ErrEntry,$Inst16,Source500
 foreach ($log_req in $log_cmd) {
   Invoke-Expression $BaseCmd$log_req;
  }
+
+$DesktopPath = [Environment]::GetFolderPath("Desktop")
