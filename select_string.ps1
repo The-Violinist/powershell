@@ -20,6 +20,12 @@ function create_delete {
     Remove-Item -Path $file_path
 }
 
+function network_function {
+$xyz = create_delete
+foreach ($item in $xyz) {
+ping $item}
+}
+
 ### MAIN ###
-create_delete
+network_function
 ### END ###
