@@ -2,7 +2,6 @@
 # Create the file path for the output file
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
 $file_path = Join-Path -Path $DesktopPath -ChildPath network_report.txt
-$file_path
 
 ### FUNCTIONS ###
 function find_ip {
